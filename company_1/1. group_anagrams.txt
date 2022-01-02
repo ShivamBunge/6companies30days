@@ -1,0 +1,20 @@
+class Solution:
+    
+    def Anagrams(self, words, n):
+        '''
+        words: list of word
+        n:      no of words
+        return : list of group of anagram {list will be sorted in driver code (not word in grp)}
+        '''
+        import collections
+        anagrams=collections.defaultdict(list)
+        for word in words:
+            counter=[0]*26
+            for i in word:
+                counter[ord(i)-ord('a')]+=1
+           
+            anagrams[tuple(counter)].append(word)
+        ans=[]
+        for i in anagrams:
+            ans.append(anagrams[i])
+        return ans
