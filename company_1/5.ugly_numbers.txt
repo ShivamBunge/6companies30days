@@ -1,0 +1,17 @@
+class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        
+        u=[0]*n
+        u[0]=1
+        p2=p3=p5=0
+        for i in range(1,n):
+            u[i]=min(u[p2]*2,u[p3]*3,u[p5]*5)
+            if u[i]==u[p2]*2:
+                p2+=1
+            if u[i]==u[p3]*3:
+                p3+=1
+            if u[i]==u[p5]*5:
+                p5+=1
+                      
+        return u[n-1]
+            
