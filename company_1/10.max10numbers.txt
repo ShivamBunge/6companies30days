@@ -1,0 +1,12 @@
+import heapq as hq
+def maxNumbers(arr,k):
+    minHeap = []
+    for i in range(k):
+        minHeap.append(arr[i])
+    hq.heapify(minHeap)
+
+    for i in range(k,len(arr)):
+        if arr[i]>minHeap[0]:
+            hq.heappop(minHeap)
+            hq.heappush(minHeap,arr[i])
+    return minHeap
