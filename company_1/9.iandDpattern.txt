@@ -1,0 +1,21 @@
+class Solution:
+    def printMinNumberForPattern(ob,S):
+        # code here 
+        ans=""
+        stack=[]
+        num=1
+        for i in range(0,len(S)):
+            if S[i]=='D':
+                stack.append(num)
+                num+=1
+            else:
+                stack.append(num)
+                num+=1
+                while stack:
+                    ans+=str(stack.pop())
+                    
+        stack.append(num)
+        while stack:
+            ans+=str(stack.pop())
+            
+        return ans

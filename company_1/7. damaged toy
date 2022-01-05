@@ -1,0 +1,10 @@
+class Solution:
+    def findPosition(self, N , M , K):
+        # code here
+        if M<=N-K+1:
+            return M+K-1
+        M=M -(N-K+1)
+        
+        if M%N==0:
+            return N
+        return M%N
