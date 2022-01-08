@@ -1,0 +1,27 @@
+class Solution:
+    
+    #Function to find maximum of each subarray of size k.
+    def max_of_subarrays(self,nums,n,k):
+        
+        #code here
+        ans=[]
+        i=j=0
+        maxq=[]
+        while j<len(nums):
+            while maxq and maxq[-1]<nums[j]:
+                maxq.pop()
+            maxq.append(nums[j])
+            if j-i+1 <k:
+                j+=1
+                continue
+            if j-i+1>k:
+                if nums[i]==maxq[0]:
+                    maxq.pop(0)                    
+                i+=1
+            if j-i+1==k:
+                ans.append(maxq[0])
+                if nums[i]==maxq[0]:
+                    maxq.pop(0) 
+                i+=1
+            j+=1
+        return ans

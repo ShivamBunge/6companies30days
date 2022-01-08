@@ -1,0 +1,34 @@
+#User function Template for python3
+
+class Solution:
+    def max_of_subarrays(self,nums,n,k):
+        '''
+        you can use collections module here.
+        :param a: given array
+        :param n: size of array
+        :param k: value of k
+        :return: A list of required values 
+        '''
+        #code here
+        
+        ans=[]
+        i=j=0
+        maxq=[]
+        while j<len(nums):
+            while maxq and maxq[-1]<nums[j]:
+                maxq.pop()
+            maxq.append(nums[j])
+            if j-i+1 <k:
+                j+=1
+                continue
+            if j-i+1>k:
+                if nums[i]==maxq[0]:
+                    maxq.pop(0)                    
+                i+=1
+            if j-i+1==k:
+                ans.append(maxq[0])
+                if nums[i]==maxq[0]:
+                    maxq.pop(0) 
+                i+=1
+            j+=1
+        return ans
