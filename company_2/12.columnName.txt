@@ -1,0 +1,9 @@
+class Solution:
+    def colName (self, n):
+        # your code here
+        ans=""
+        while(n>0):
+            c= chr(65+(n-1)%26)
+            ans=c+ans
+            n=(n-1)//26
+        return ans
