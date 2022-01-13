@@ -1,0 +1,42 @@
+class Solution
+{
+   int tempArea = 0;
+
+   public int findMaxArea(int grid[][]){
+       int n = grid.length;
+       int m = grid[0].length;
+       boolean vis[][] = new boolean[n][m];
+       int maxArea = 0;
+       for(int i = 0 ; i<n ; i++){
+           for(int j = 0 ; j<m ; j++){
+               if(isSafe(grid, i, j, vis, n, m)){
+                   tempArea = 0;
+                   DFS(grid, i, j, vis, n, m);
+                   maxArea = Math.max(maxArea, tempArea);
+               }
+           }
+       }
+       return maxArea;
+   }
+   
+   public void DFS(int grid[][], int x, int y, boolean vis[][], int n, int m){
+       vis[x][y] = true;
+       tempArea++;
+       int dx[] = {-1, 0, 1, -1, 1, -1, 0, 1};
+       int dy[] = {-1, -1, -1, 0, 0, 1, 1, 1};
+       for(int j = 0 ; j<8 ; j++){
+           int x_ = x + dx[j];
+           int y_ = y + dy[j];
+           if(isSafe(grid, x_, y_, vis, n, m)){
+               DFS(grid, x_, y_, vis, n, m);
+           }
+       }
+   }
+
+   public boolean isSafe(int grid[][], int x, int y, boolean vis[][], int n, int m){
+       if(x<0 || y<0 || x>=n || y>=m || vis[x][y] || grid[x][y]==0){
+           return false;
+       }
+       return true;
+   }
+}
