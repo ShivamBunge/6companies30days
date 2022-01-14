@@ -1,0 +1,20 @@
+
+
+class Tree
+{   int count;
+    //Function to count number of subtrees having sum equal to given sum.
+    int countSubtreesWithSumX(Node root, int X)
+    {
+	//Add your code here.
+	count=0;
+	dfs(root,X);
+	return count;
+    }
+    
+    private int dfs(Node root,int X){
+        if (root==null) return 0;
+        int sum=root.data+dfs(root.left,X)+dfs(root.right,X);
+        if (sum==X) count++;
+        return sum;
+    }
+}

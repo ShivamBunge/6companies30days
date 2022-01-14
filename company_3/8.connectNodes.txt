@@ -1,0 +1,17 @@
+lass Solution:
+    def connect(self, root: 'Node') -> 'Node':
+        #bfs 
+        q=[root]
+        if not root: return None
+      
+        while q:
+            node=q.pop(0)
+            
+            if node.left and node.right:
+                node.left.next=node.right
+                if node.next:
+                    node.right.next=node.next.left
+                q.append(node.left)
+                q.append(node.right)
+            
+        return root
