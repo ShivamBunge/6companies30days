@@ -1,0 +1,28 @@
+
+
+class solve{
+    
+    //Function to generate binary numbers from 1 to N using a queue.
+    static ArrayList<String> generate(int N)
+    {
+        
+        ArrayList<String> ans
+            = new ArrayList<String>(N);
+        // Your code here
+        for(int i=1;i<=N;i++){
+            int bin=0;
+            int ctr=0;
+            int temp=i;
+            while (temp>0){
+                bin+=((temp%2)*(Math.pow(10, ctr)));
+                temp =temp/2;
+                ctr+=1;
+            }
+            
+            String s=Integer.toString(bin);  
+            ans.add(s);
+        }
+        return ans;
+    }
+    
+}
