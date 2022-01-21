@@ -1,0 +1,19 @@
+
+class Solution:
+    #Back-end complete function Template for Python 3
+    ans=[]
+    #Function to find the leaders in the array.
+    def leaders(self, nums, N):
+        maxm=0
+        ans=[]
+        c=len(nums)-1
+        for j in range(len(nums)-1,-1,-1):
+            i=nums[j]
+            if i>maxm:
+                maxm=i
+            if maxm==i and c==j:
+                ans.append(i)
+            c-=1
+        return ans[::-1]        
+                
+        #Code here

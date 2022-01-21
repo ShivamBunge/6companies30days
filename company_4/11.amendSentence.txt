@@ -1,0 +1,12 @@
+def amendSentence(self, s):
+
+        # code here
+        
+        output_s=s[0].lower()
+        for i in s[1:]:
+            if i.islower():
+                output_s+=i
+            else:
+                output_s+=' '
+                output_s+=i.lower()
+        return output_s
