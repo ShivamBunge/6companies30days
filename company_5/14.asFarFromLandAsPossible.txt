@@ -1,0 +1,29 @@
+class Solution:
+    def maxDistance(self, grid: List[List[int]]) -> int:
+        #check dfs as well
+        #traverse through the 1 cells 
+        #add them to q along with d=0 and run bfs on them
+        #move in all directions if its a zero d+=1 and make it 1 and add to q
+        #repeat
+        q=[]
+        n=len(grid)
+        for i in range(n):
+            for j in range(n):
+                if grid[i][j]==1:
+                    q.append((i,j,0))#
+        dd=0
+        if len(q)==0 or len(q)==n*n:
+            return -1
+        while q:
+            i,j,d= q.pop(0)
+            
+            dd=max(d,dd)
+            for x,y in [(1,0),(-1,0),(0,1),(0,-1)]:
+                new_x, new_y= i+x, j+y
+                if 0<= new_x <n and 0<= new_y <n:
+                    if grid[new_x][new_y]==0:
+                        grid[new_x][new_y]=1
+                        q.append((new_x,new_y,d+1))
+        return dd          
+            
+            

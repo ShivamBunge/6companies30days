@@ -1,0 +1,24 @@
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        
+        ans=[]
+        indegree={}
+        graph=defaultdict(list)
+        for u,v in prerequisites:
+            graph[v].append(u)
+            indegree[u]=indegree.get(u,0)+1
+            
+        zero_indegree=[k for k in range(numCourses) if k not in indegree]
+        
+        while zero_indegree:
+            vertex=zero_indegree.pop(0)
+            ans.append(vertex)
+            if vertex in graph:
+                for nb in graph[vertex]:
+                    indegree[nb]-=1
+                    if indegree[nb]==0:
+                        zero_indegree.append(nb)
+        return ans if len(ans)==numCourses else []
+        
+        
+        
