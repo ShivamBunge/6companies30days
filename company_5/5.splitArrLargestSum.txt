@@ -1,0 +1,23 @@
+class Solution:
+    def splitArray(self, nums: List[int], m: int) -> int:
+        def possible(s):
+            splits=0
+            cur=0
+            for num in nums:
+                cur+=num
+                if cur>s:
+                    splits+=1
+                    cur=num
+                    if splits>m-1:
+                        return False
+            return True
+        low=max(nums)
+        high=sum(nums)
+        while low<high:
+            mid=(low+high)//2
+            if possible(mid):
+                high=mid
+            else:
+                low=mid+1
+        return low
+        
