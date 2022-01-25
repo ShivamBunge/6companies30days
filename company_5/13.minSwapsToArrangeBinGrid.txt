@@ -6,8 +6,10 @@ class Solution {
     
     private int minSwaps(int[] a) {
         int n = a.length;
-        int ans = 0;
-        for (int i=0; i<n; i++) {
+        int ans = 0;    
+        for (int i=0; i<n; i++) {   //we start at row with max need for zeros(ie first row) so when it gets the req
+                                    //no of zeros, we can guarantee that the swapped no wouldnt be needed for any other row
+                                    //since they are smaller than prev
             if (a[i] < (n-i-1)) {
                 int j=i;
                 while (j < n && a[j] < (n-i-1)) {
@@ -17,7 +19,7 @@ class Solution {
                 if (j == n) {     // Did not find any number greater than or equal to n-i-1.
                     return -1;  // so its impossible to get the answer.
                 }
-                while (j>i) {
+                while (j>i) {    //swap the correct no to its place
                     //swap(a[j], a[j-1]);
                     int temp = a[j];
                     a[j] = a[j-1];
