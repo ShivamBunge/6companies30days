@@ -1,0 +1,25 @@
+
+class Solution
+{
+        
+    long power(int N,int R)
+    {
+        int mod=1000000007;
+        if(N==0) return 0;
+        if(R==0) return 1;
+        long res;
+        if(R%2==0){
+            res= power(N,R/2);
+            res=(res*res)%mod;
+        }
+        else{
+            res=N%mod;
+            res=(res*power(N,R-1)%mod)%mod;
+        
+        }
+        return (res%mod);
+        
+    }
+   
+
+}
